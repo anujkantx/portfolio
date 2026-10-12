@@ -1,0 +1,131 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-base: #060608;
+  --bg-surface: #0D0D11;
+  --bg-subtle: #14141A;
+  --bg-card: #0F0F14;
+  --bg-elevated: #171720;
+  
+  --text-primary: #FFFFFF;
+  --text-secondary: #B4B4C0;
+  --text-muted: #747484;
+  --text-faint: #444452;
+
+  --border-subtle: #1A1A22;
+  --border-default: #262632;
+  --border-strong: #3D3D4E;
+
+  --accent: #E50914;
+  --accent-hover: #FF1F2B;
+  --accent-light: rgba(229, 9, 20, 0.16);
+  --accent-warm: #E50914;
+  --accent-warm-light: rgba(229, 9, 20, 0.22);
+
+  --dark-surface: #0D0D11;
+  --dark-border: #22222E;
+  --dark-text: #FFFFFF;
+  --dark-muted: #747484;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+}
+
+@theme inline {
+  --color-bg-base: var(--bg-base);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-subtle: var(--bg-subtle);
+  --color-bg-card: var(--bg-card);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-light: var(--accent-light);
+  --color-accent-warm: var(--accent-warm);
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  --font-serif: var(--font-serif), Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-display: 'Bebas Neue', 'Anton', Impact, sans-serif;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Cinematic film selection */
+::selection {
+  background-color: #E50914;
+  color: #FFFFFF;
+}
+
+/* Subtle dark grid & film textures */
+.editorial-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+.editorial-dots {
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+}
+
+/* 35mm film strip sprockets */
+.film-sprockets {
+  background-image: radial-gradient(circle, #000 35%, transparent 36%);
+  background-size: 16px 16px;
+}
+
+.editorial-dots {
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(188, 186, 176, 0.4) 1px, transparent 1px);
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus visible styles for accessible keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
