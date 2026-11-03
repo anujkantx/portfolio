@@ -13,13 +13,19 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 pb-12 border-b border-[var(--border-subtle)]">
           {/* Brand & bio note */}
           <div className="md:col-span-5 space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="font-serif font-semibold text-lg text-[var(--text-primary)]">
-                {siteConfig.name}
+            <div className="flex items-center gap-1.5">
+              <span className="font-extrabold text-lg tracking-tight text-white uppercase" style={{ fontFamily: "var(--font-display, Impact, sans-serif)" }}>
+                ANUJ
               </span>
-              <span className="text-[var(--text-muted)] text-sm">/</span>
+              <span className="w-3.5 h-3.5 rounded-xs bg-[#E50914] text-black flex items-center justify-center font-mono text-[10px] font-black">
+                +
+              </span>
+              <span className="font-extrabold text-lg tracking-tight text-white uppercase" style={{ fontFamily: "var(--font-display, Impact, sans-serif)" }}>
+                DEV
+              </span>
+              <span className="text-[var(--text-muted)] text-sm mx-1">/</span>
               <span className="font-mono text-xs text-[var(--text-muted)] uppercase tracking-wider">
-                Portfolio
+                {siteConfig.name}
               </span>
             </div>
             <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-sm">

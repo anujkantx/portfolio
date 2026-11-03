@@ -1,10 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowUp } from "lucide-react";
 
 export function CurrentYear() {
-  return <span suppressHydrationWarning>{new Date().getFullYear()}</span>;
+  const [year, setYear] = useState<number>(2026);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
+  return <span suppressHydrationWarning>{year}</span>;
 }
 
 export function ScrollToTopButton() {

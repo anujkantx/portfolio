@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
-import { X, ArrowUpRight, Mail } from "lucide-react";
+import { X, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/icons";
 import { siteConfig } from "@/content/site";
 

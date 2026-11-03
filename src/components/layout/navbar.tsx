@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, ArrowRight } from "lucide-react";
-import { siteConfig } from "@/content/site";
+import { Search, User, Menu } from "lucide-react";
 import { MobileNav } from "./mobile-nav";
 import { Container } from "../ui/container";
 
@@ -20,85 +19,100 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { href: "/#work", label: "Work" },
-    { href: "/#about", label: "About" },
-    { href: "/#skills", label: "Capabilities" },
-    { href: "/#creative", label: "Creative" },
-    { href: "/#experience", label: "Journey" },
+    { href: "/#work", label: "WORK" },
+    { href: "/#about", label: "ABOUT" },
+    { href: "/#skills", label: "CAPABILITIES" },
+    { href: "/#creative", label: "CREATIVE" },
+    { href: "/#experience", label: "JOURNEY" },
   ];
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-[var(--bg-base)]/90 backdrop-blur-md border-b border-[var(--border-subtle)] py-3 shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
-            : "bg-transparent py-5"
+            ? "bg-[#060608]/90 backdrop-blur-md border-b border-white/10 py-3 shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+            : "bg-gradient-to-b from-[#060608]/90 to-transparent py-4 sm:py-5"
         }`}
       >
         <Container size="wide">
           <div className="flex items-center justify-between">
-            {/* Wordmark */}
+            {/* Wordmark in Cine+Daily style */}
             <Link
               href="/"
-              className="group flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded-sm"
+              className="group flex items-center gap-1.5 focus-visible:outline-none"
               aria-label="Anujkant homepage"
             >
-              <div className="w-7 h-7 rounded-sm bg-[var(--text-primary)] text-white flex items-center justify-center font-mono text-xs font-semibold tracking-tighter group-hover:bg-[var(--accent)] transition-colors">
-                AK
-              </div>
-              <div className="flex flex-col">
-                <span className="font-serif font-medium text-base sm:text-lg tracking-tight text-[var(--text-primary)] leading-none group-hover:text-[var(--accent)] transition-colors">
-                  {siteConfig.name}
-                </span>
-                <span className="font-mono text-[10px] tracking-wider uppercase text-[var(--text-muted)] mt-0.5">
-                  Engineer & Builder
-                </span>
-              </div>
+              <span className="font-extrabold text-lg sm:text-xl tracking-tighter text-white uppercase" style={{ fontFamily: "var(--font-display, Impact, sans-serif)" }}>
+                ANUJ
+              </span>
+              <span className="w-4 h-4 rounded-xs bg-[#E50914] text-black flex items-center justify-center font-mono text-xs font-black">
+                +
+              </span>
+              <span className="font-extrabold text-lg sm:text-xl tracking-tighter text-white uppercase" style={{ fontFamily: "var(--font-display, Impact, sans-serif)" }}>
+                DEV
+              </span>
+              <span className="hidden sm:inline-block text-[10px] font-mono tracking-widest text-white/40 ml-2 border-l border-white/20 pl-2">
+                PORTFOLIO
+              </span>
             </Link>
 
-            {/* Desktop Navigation Links */}
+            {/* Desktop Navigation Links with bullet dots */}
             <nav
               aria-label="Main Navigation"
-              className="hidden md:flex items-center gap-7 lg:gap-9 text-sm"
+              className="hidden md:flex items-center gap-5 lg:gap-7 text-xs font-mono font-medium tracking-widest uppercase text-white/70"
             >
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors font-medium relative py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded-sm"
-                >
-                  {link.label}
-                </Link>
+              {navLinks.map((link, idx) => (
+                <React.Fragment key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="hover:text-white transition-colors relative py-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#E50914]"
+                  >
+                    {link.label}
+                  </Link>
+                  {idx < navLinks.length - 1 && (
+                    <span className="w-1 h-1 rounded-full bg-white/20" />
+                  )}
+                </React.Fragment>
               ))}
             </nav>
 
-            {/* CTA action & Mobile Trigger */}
-            <div className="flex items-center gap-3">
+            {/* Right Action Icons in clean circle pills */}
+            <div className="flex items-center gap-2.5">
+              {/* Search button */}
               <Link
-                href="/#contact"
-                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-mono font-medium text-[var(--text-primary)] border border-[var(--border-default)] hover:border-[var(--accent)] hover:text-[var(--accent)] hover:bg-[var(--bg-subtle)] rounded-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] group"
+                href="/#work"
+                className="w-8 h-8 rounded-full border border-white/20 hover:border-white/50 text-white/80 hover:text-white flex items-center justify-center transition-colors"
+                aria-label="Search work"
               >
-                <span>Contact</span>
-                <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
+                <Search className="w-3.5 h-3.5" />
               </Link>
 
-              {/* Mobile menu hamburger */}
+              {/* User/Profile button */}
+              <Link
+                href="/#about"
+                className="w-8 h-8 rounded-full border border-white/20 hover:border-white/50 text-white/80 hover:text-white flex items-center justify-center transition-colors"
+                aria-label="Profile and About"
+              >
+                <User className="w-3.5 h-3.5" />
+              </Link>
+
+              {/* White hamburger circle pill button */}
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(true)}
-                className="md:hidden p-2 -mr-1 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-subtle)] rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-                aria-label="Open mobile menu"
+                className="w-8 h-8 rounded-full bg-white text-black hover:bg-white/90 flex items-center justify-center transition-transform hover:scale-105 cursor-pointer ml-1"
+                aria-label="Open navigation menu"
                 aria-expanded={mobileMenuOpen}
               >
-                <Menu className="w-5 h-5" />
+                <Menu className="w-4 h-4 stroke-[2.5]" />
               </button>
             </div>
           </div>
         </Container>
       </header>
 
-      {/* Mobile nav drawer */}
+      {/* Mobile Drawer Navigation */}
       <MobileNav
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}

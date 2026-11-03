@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
 
 :root {
   --bg-base: #060608;
@@ -88,10 +88,6 @@ body {
   background-size: 16px 16px;
 }
 
-.editorial-dots {
-  background-size: 24px 24px;
-  background-image: radial-gradient(rgba(188, 186, 176, 0.4) 1px, transparent 1px);
-}
 
 /* Custom minimal scrollbar */
 ::-webkit-scrollbar {
