@@ -1,14 +1,16 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useSyncExternalStore } from "react";
 import { ArrowUp } from "lucide-react";
 
-export function CurrentYear() {
-  const [year, setYear] = useState<number>(2026);
+const emptySubscribe = () => () => {};
 
-  useEffect(() => {
-    setYear(new Date().getFullYear());
-  }, []);
+export function CurrentYear() {
+  const year = useSyncExternalStore(
+    emptySubscribe,
+    () => new Date().getFullYear(),
+    () => 2026
+  );
 
   return <span suppressHydrationWarning>{year}</span>;
 }
